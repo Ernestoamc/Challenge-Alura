@@ -1,14 +1,19 @@
-from langchain_community.document_loader import PyPDFLoader
+from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_cohere import CohereEmbeddings, ChatCohere
 from langchain_community.vectorstores import FAISS
-from langchain.chains import RetrievalQA
+from langchain_classic.chains import RetrievalQA
 from core.dominio.puertos import PuertoCargadorDocumentos, PuertoAlmacenVectorial, PuertoLLM
 
 class AdaptadorPyPDF(PuertoCargadorDocumentos):
     def cargarDividir(self, rutaArchivo: str):
-        cargador = PyPDFLoader(rutaArchivo)
+        print(f"[Sistema]: Escaneando directorio '{rutaArchivo}' en busca de documentos PDF...")
+        cargador = PyPDFDirectoryLoader(rutaArchivo)
         documentos = cargador.load()
+
+        if not documentos:
+            raise ValueError(f"Error: No se encontraron PDFs legibles en la {rutaArchivo}.")
+        print(f"Se han cargado {len(documentos)} paginas en total.")
         divisor = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
         return divisor.split_documents(documentos)
     

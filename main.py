@@ -15,7 +15,7 @@ def main():
         almacenVectorial=AdaptadorFaissCohere(),
         llm=AdaptadorCohereLLM()
     )
-    rutaDocumento = "./data/documento.pdf"
+    rutaDocumento = "./data"
 
     if not os.path.exists(rutaDocumento):
         print(f"El archivo no existe en la ruta {rutaDocumento}.")
