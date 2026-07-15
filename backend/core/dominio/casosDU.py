@@ -1,4 +1,4 @@
-from backend.core.dominio.puertos import PuertoCargadorDocumentos, PuertoAlmacenVectorial, PuertoLLM
+from core.dominio.puertos import PuertoCargadorDocumentos, PuertoAlmacenVectorial, PuertoLLM
 
 class AplicacionRAG:
     def __init__(self, cargador: PuertoCargadorDocumentos, almacenVectorial: PuertoAlmacenVectorial, llm:PuertoLLM):

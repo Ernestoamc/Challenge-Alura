@@ -2,8 +2,8 @@ import os
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from backend.core.infraestructura.adaptadores import AdaptadorPyPDF, AdaptadorFaissCohere, AdaptadorCohereLLM
-from backend.core.dominio.casosDU import AplicacionRAG
+from core.infraestructura.adaptadores import AdaptadorPyPDF, AdaptadorFaissCohere, AdaptadorCohereLLM
+from core.dominio.casosDU import AplicacionRAG
 
 load_dotenv()
 
