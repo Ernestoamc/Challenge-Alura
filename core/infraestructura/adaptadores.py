@@ -32,7 +32,7 @@ class AdaptadorFaissCohere(PuertoAlmacenVectorial):
 
 class AdaptadorCohereLLM(PuertoLLM):
     def __init__(self):
-        self.llm = ChatCohere(model="command-r-plus")
+        self.llm = ChatCohere()
 
     def generarRespuesta(self, consulta: str, recuperador):
         cadena = RetrievalQA.from_chain_type(
