@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from core.infraestructura.adaptadores import AdaptadorPyPDF, AdaptadorFaissCohere, AdaptadorCohereLLM
 from core.dominio.casosDU import AplicacionRAG
@@ -11,6 +12,22 @@ class ConsultaWeb(BaseModel):
     pregunta:str
 
 app = FastAPI(title="API del Agente BIMBAM Buy")
+
+origenes_raw = os.getenv("FRONTEND_URLS")
+
+if not origenes_raw:
+    origenes_permitidos = []
+    print("No se han definido orígenes CORS.")
+else:
+    origenes_permitidos = origenes_raw.split(",")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origenes_permitidos,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 agenteGlobal = None
 
