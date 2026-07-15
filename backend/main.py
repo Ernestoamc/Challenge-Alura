@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
-from core.infraestructura.adaptadores import AdaptadorPyPDF, AdaptadorFaissCohere, AdaptadorCohereLLM
-from core.dominio.casosDU import AplicacionRAG
+from backend.core.infraestructura.adaptadores import AdaptadorPyPDF, AdaptadorFaissCohere, AdaptadorCohereLLM
+from backend.core.dominio.casosDU import AplicacionRAG
 
 def main():
     load_dotenv()
