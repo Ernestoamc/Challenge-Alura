@@ -14,9 +14,20 @@ class AplicacionRAG:
         self._estaInicializada = True
         print("Base de conocimiento indexada en memoria de forma exitosa.")
 
+    def _esPreguntaDirecta(self, consulta: str) -> bool:
+        palabrasClave = ["cuál es el porcentaje", "cuántos", "fecha", "total", "cantidad exacta"]
+        return any(palabra in consulta.lower() for palabra in palabrasClave)
+
     def hacerPregunta(self, consulta: str) -> str:
         if not self._estaInicializada:
             return "Operacion denegada. Inicialice la base de conocimiento primero."
         
         recuperador = self.almacenVectorial.obtenerRecuperador()
-        return self.llm.generarRespuesta(consulta, recuperador)
+
+        if self._esPreguntaDirecta(consulta):
+            print("\n[Enrutador] Pregunta directa detectada. Solicitando extraccion de dato duro...")
+            consultaModificada = consulta + " (Responde únicamente con el dato exacto o número, sin explicaciones ni texto adicional)."
+            return self.llm.generarRespuesta(consultaModificada, recuperador)
+        else:
+            print("\n[Enrutador] Pregunta analitica detectada. Usando generación de lenguaje natural...")
+            return self.llm.generarRespuesta(consulta, recuperador)
