@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import ReactMarkdown from "react-markdown";
 import {
   Send,
   ShoppingBag,
@@ -89,7 +90,7 @@ export default function App() {
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, newBotMessage]);
-    } catch (error) {
+    } catch {
       setMessages((prev) => [
         ...prev,
         {
@@ -184,7 +185,41 @@ export default function App() {
                         : "bg-black/30 border-white/5 text-white/90 rounded-tl-sm"
                     }`}
                   >
-                    {message.text}
+                    {message.sender === "user" ? (
+                      <div className="whitespace-pre-wrap">{message.text}</div>
+                    ) : (
+                      <div className="space-y-3">
+                        <ReactMarkdown
+                          components={{
+                            p: (props) => (
+                              <p className="text-white/90 leading-relaxed">
+                                {props.children}
+                              </p>
+                            ),
+                            ul: (props) => (
+                              <ul className="list-disc pl-5 space-y-1 text-white/80">
+                                {props.children}
+                              </ul>
+                            ),
+                            ol: (props) => (
+                              <ol className="list-decimal pl-5 space-y-1 text-white/80">
+                                {props.children}
+                              </ol>
+                            ),
+                            li: (props) => (
+                              <li className="pl-1">{props.children}</li>
+                            ),
+                            strong: (props) => (
+                              <strong className="font-semibold text-emerald-400">
+                                {props.children}
+                              </strong>
+                            ),
+                          }}
+                        >
+                          {message.text}
+                        </ReactMarkdown>
+                      </div>
+                    )}
                   </div>
                   <span className="text-[11px] text-white/40 mt-1.5 px-1 font-medium">
                     {message.timestamp.toLocaleTimeString([], {
