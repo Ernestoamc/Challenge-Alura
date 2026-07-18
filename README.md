@@ -38,8 +38,11 @@ flowchart LR
     E --> F[Recuperador FAISS]
     F --> G[Chunks relevantes del PDF]
     G --> H[ChatCohere via LangChain]
-    H --> I[Respuesta final]
-    I --> B
+    H --> I[Respuesta con citas]
+    G --> J[Metadatos de fuente archivo y pagina]
+    I --> K[JSON respuesta + fuentes]
+    J --> K
+    K --> B
 ```
 
 ## 3. Estructura del repositorio
@@ -133,19 +136,19 @@ Pruebas realizadas contra el endpoint publicado en Railway:
 - Fecha de prueba: 2026-07-18
 
 1. Pregunta: "Resume el proceso tecnico de atencion de casos."
-   Respuesta resumida de la API: apertura del caso, validacion documental, diagnostico inicial, resolucion, seguimiento, tiempos de atencion y responsabilidades del cliente.
+  Respuesta resumida de la API: recepcion de solicitud, validacion inicial, clasificacion del caso, diagnostico inicial, resolucion tecnica, comunicacion al cliente y seguimiento.
 
 2. Pregunta: "Que datos se deben registrar en cada incidencia logistica?"
-   Respuesta resumida de la API: numero de orden, estado logistico, fecha del evento, operador involucrado, accion tomada y resultado final.
+  Respuesta resumida de la API: numero de orden, estado logistico, fecha del evento, operador involucrado, accion tomada y resultado final.
 
 3. Pregunta: "Que recomendaciones da el documento para comunicacion con clientes?"
-   Respuesta resumida de la API: claridad, respeto, consistencia, evitar tecnicismos innecesarios, no prometer antes de validar, documentar resoluciones y escalar casos fuera de protocolo.
+  Respuesta resumida de la API: comunicacion clara y respetuosa, lenguaje simple, evitar promesas antes de validar, explicar siguiente paso, mantener consistencia entre canales y explicar motivo de rechazo con opciones.
 
 4. Pregunta: "Que informacion debe incluir la respuesta al cliente?"
-   Respuesta resumida de la API: decision tomada, motivo, pasos siguientes, plazo de espera y opciones disponibles en caso de rechazo.
+  Respuesta resumida de la API: estado actual, causa probable, accion recomendada, plazo estimado, condicion de seguimiento, cobertura aplicable, decision tomada y proximos pasos.
 
 5. Pregunta: "Resume las recomendaciones para crear contenido confiable."
-   Respuesta resumida de la API: honestidad, beneficios reales, evitar afirmaciones absolutas, consistencia visual, enlaces oficiales y transparencia.
+  Respuesta resumida de la API: contenido honesto y util, beneficios reales, evitar afirmaciones absolutas, consistencia visual de marca, enlaces oficiales, transparencia promocional y cumplimiento de reglas locales.
 
 ## 8. Ejecucion local
 
