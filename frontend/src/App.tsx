@@ -10,11 +10,16 @@ import {
   Paperclip,
 } from "lucide-react";
 
+interface Fuente {
+  archivo: string;
+  pagina: string | number;
+}
 interface Message {
   id: string;
   text: string;
   sender: "user" | "bot";
   timestamp: Date;
+  fuentes?: Fuente[];
 }
 
 export default function App() {
@@ -88,6 +93,7 @@ export default function App() {
         text: data.respuesta,
         sender: "bot",
         timestamp: new Date(),
+        fuentes: data.fuentes,
       };
       setMessages((prev) => [...prev, newBotMessage]);
     } catch {
@@ -218,6 +224,19 @@ export default function App() {
                         >
                           {message.text}
                         </ReactMarkdown>
+                        {message.fuentes && message.fuentes.length > 0 && (
+                          <div className="mt-3 pt-3 border-t border-white/10 flex flex-wrap gap-1.5">
+                            {message.fuentes.map((f, i) => (
+                              <span
+                                key={i}
+                                className="text-[11px] px-2 py-1 rounded-full bg-white/5 border border-white/10 text-white/50 font-medium"
+                                title={`${f.archivo}, página ${f.pagina}`}
+                              >
+                                📄 {f.archivo} · p.{f.pagina}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>

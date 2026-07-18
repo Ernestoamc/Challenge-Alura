@@ -18,7 +18,7 @@ class AplicacionRAG:
         palabrasClave = ["cuál es el porcentaje", "cuántos", "fecha", "total", "cantidad exacta"]
         return any(palabra in consulta.lower() for palabra in palabrasClave)
 
-    def hacerPregunta(self, consulta: str) -> str:
+    def hacerPregunta(self, consulta: str) -> dict:
         if not self._estaInicializada:
             return "Operacion denegada. Inicialice la base de conocimiento primero."
         

@@ -41,6 +41,11 @@ def main():
         try:
             respuesta = aplicacion.hacerPregunta(pregunta)
             print("\n[Respuesta]:")
+            print(respuesta["respuesta"])
+            if respuesta.get("fuentes"):
+                print("\n[Fuentes]:")
+                for fuente in respuesta["fuentes"]:
+                    print(f"Archivo: {fuente['archivo']}, Página: {fuente['pagina']}")
             print(respuesta)
         except Exception as e:
             print(f"\nExcepcion detectada durante la inferencia: {e}")

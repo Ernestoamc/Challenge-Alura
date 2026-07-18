@@ -56,6 +56,6 @@ def endpointPreguntar(consulta: ConsultaWeb):
     
     try:
         respuesta = agenteGlobal.hacerPregunta(consulta.pregunta)
-        return {"respuesta": respuesta}
+        return {"respuesta": respuesta["respuesta"], "fuentes": respuesta["fuentes"]}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Fallo en inferencia: {str(e)}")

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import List, Any
+from typing import List, Any, Dict
 
 class PuertoCargadorDocumentos(ABC):
     @abstractmethod
@@ -17,5 +17,5 @@ class PuertoAlmacenVectorial(ABC):
 
 class PuertoLLM(ABC):
      @abstractmethod
-     def generarRespuesta(self, consulta: str, recuperador: Any) -> str:
+     def generarRespuesta(self, consulta: str, recuperador: Any) -> Dict[str, Any]:
          pass
