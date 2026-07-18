@@ -136,19 +136,19 @@ Pruebas realizadas contra el endpoint publicado en Railway:
 - Fecha de prueba: 2026-07-18
 
 1. Pregunta: "Resume el proceso tecnico de atencion de casos."
-  Respuesta resumida de la API: recepcion de solicitud, validacion inicial, clasificacion del caso, diagnostico inicial, resolucion tecnica, comunicacion al cliente y seguimiento.
+   Respuesta resumida de la API: recepcion de solicitud, validacion inicial, clasificacion del caso, diagnostico inicial, resolucion tecnica, comunicacion al cliente y seguimiento.
 
 2. Pregunta: "Que datos se deben registrar en cada incidencia logistica?"
-  Respuesta resumida de la API: numero de orden, estado logistico, fecha del evento, operador involucrado, accion tomada y resultado final.
+   Respuesta resumida de la API: numero de orden, estado logistico, fecha del evento, operador involucrado, accion tomada y resultado final.
 
 3. Pregunta: "Que recomendaciones da el documento para comunicacion con clientes?"
-  Respuesta resumida de la API: comunicacion clara y respetuosa, lenguaje simple, evitar promesas antes de validar, explicar siguiente paso, mantener consistencia entre canales y explicar motivo de rechazo con opciones.
+   Respuesta resumida de la API: comunicacion clara y respetuosa, lenguaje simple, evitar promesas antes de validar, explicar siguiente paso, mantener consistencia entre canales y explicar motivo de rechazo con opciones.
 
 4. Pregunta: "Que informacion debe incluir la respuesta al cliente?"
-  Respuesta resumida de la API: estado actual, causa probable, accion recomendada, plazo estimado, condicion de seguimiento, cobertura aplicable, decision tomada y proximos pasos.
+   Respuesta resumida de la API: estado actual, causa probable, accion recomendada, plazo estimado, condicion de seguimiento, cobertura aplicable, decision tomada y proximos pasos.
 
 5. Pregunta: "Resume las recomendaciones para crear contenido confiable."
-  Respuesta resumida de la API: contenido honesto y util, beneficios reales, evitar afirmaciones absolutas, consistencia visual de marca, enlaces oficiales, transparencia promocional y cumplimiento de reglas locales.
+   Respuesta resumida de la API: contenido honesto y util, beneficios reales, evitar afirmaciones absolutas, consistencia visual de marca, enlaces oficiales, transparencia promocional y cumplimiento de reglas locales.
 
 ## 8. Ejecucion local
 
@@ -227,6 +227,10 @@ curl -X POST "https://challenge-alura-ernestoamc.up.railway.app/preguntar" \
 ```
 
 Captura de evidencia:
+
+- Aplicación ejecutándose correctamente
+
+![Aplicacion ejecutandoce](docs/Agenteejecutandoce.png)
 
 - Deployment del backend RAG en Railway:
 
